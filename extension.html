@@ -16,6 +16,7 @@
             --heading-color: #0f172a;
             --accent-green: #10b981;
             --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
             --border-color: #e2e8f0;
         }
 
@@ -34,6 +35,7 @@
             line-height: 1.6;
         }
 
+        /* Sidebar Navigation */
         aside {
             width: 270px;
             background-color: var(--sidebar-bg);
@@ -41,10 +43,11 @@
             padding: 2rem 1rem;
             position: fixed;
             height: 100vh;
+            overflow-y: auto;
         }
 
         aside h2 { font-size: 1.25rem; color: #f1f5f9; }
-        aside p.subtitle { font-size: 0.85rem; color: var(--sidebar-text); margin-bottom: 2rem; }
+        aside p.subtitle { font-size: 0.85rem; color: var(--sidebar-text); margin-bottom: 2rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
 
         nav ul { list-style: none; }
         nav li { margin-bottom: 0.5rem; }
@@ -55,9 +58,12 @@
             padding: 0.6rem 0.85rem;
             border-radius: 6px;
             font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
         }
-        nav a.active { background-color: var(--primary-color); color: white; }
+        nav a:hover, nav a.active { background-color: var(--primary-color); color: white; }
 
+        /* Main Content */
         main {
             margin-left: 270px;
             flex: 1;
@@ -76,6 +82,9 @@
 
         h1 { font-size: 2.25rem; color: var(--heading-color); margin-bottom: 0.75rem; }
         h2 { font-size: 1.5rem; color: var(--heading-color); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.2rem; color: var(--heading-color); margin: 1rem 0 0.5rem 0; }
+
+        p { margin-bottom: 1rem; }
 
         .badge {
             display: inline-block;
@@ -88,6 +97,14 @@
             margin-bottom: 1rem;
         }
 
+        /* Grids & Cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
         .info-card {
             background-color: #f8fafc;
             border: 1px solid var(--border-color);
@@ -97,11 +114,36 @@
             margin-bottom: 1rem;
         }
 
+        .topic-card {
+            background: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .topic-card:hover, .topic-card.selected {
+            border-color: var(--primary-color);
+            background: #eff6ff;
+        }
+
         .interactive-box {
             background-color: #f1f5f9;
             padding: 1.5rem;
             border-radius: 8px;
             margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        textarea, input[type="text"], select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         button {
@@ -113,11 +155,19 @@
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
+            transition: background-color 0.2s;
         }
 
         button:hover { background-color: var(--primary-hover); }
 
         .hidden { display: none; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; height: auto; position: relative; }
+            main { margin-left: 0; padding: 1.5rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -127,22 +177,25 @@
         <p class="subtitle">Fast-Finisher Zone</p>
         <nav>
             <ul>
-                <li><a href="#" class="active">🚀 Brain Superpowers</a></li>
-                <li><a href="index.html">⬅️ Back to Main Hub</a></li>
+                <li><a href="#quiz" class="active">1. Superpower Quiz</a></li>
+                <li><a href="#case-study">2. Taylor Swift Spotlight</a></li>
+                <li><a href="#research">3. Mini Research Lab</a></li>
+                <li><a href="index.html" style="margin-top: 1.5rem; background: #334155; color: white;">⬅️ Back to Main Hub</a></li>
             </ul>
         </nav>
     </aside>
 
     <main>
-        <section>
+        <!-- Quiz Section -->
+        <section id="quiz">
             <span class="badge">Bonus Extension Challenge</span>
-            <h1>Discover Your Executive Function Superpower! ⚡</h1>
-            <p>You finished early! Take this quick 3-question self-quiz to discover your brain's naturally strong Executive Function area and unlock custom study strategies.</p>
+            <h1>Discover Your Brain Superpower! ⚡</h1>
+            <p>You finished early! Take this quick 2-question self-assessment to discover your brain's naturally strong Executive Function area and unlock custom study strategies.</p>
 
             <div class="interactive-box">
                 <h3>Question 1: Desk & Folder Management</h3>
                 <p>How do you usually handle loose papers and school handouts?</p>
-                <select id="q1" style="width:100%; padding:0.5rem; margin:0.5rem 0 1rem 0;">
+                <select id="q1">
                     <option value="org">I file them in color-coded folders immediately.</option>
                     <option value="plan">I write down what page they belong to in my agenda.</option>
                     <option value="focus">I read them carefully right away so I don't forget.</option>
@@ -150,7 +203,7 @@
 
                 <h3>Question 2: Big Projects</h3>
                 <p>When assigned a major project due in 3 weeks, what is your first instinct?</p>
-                <select id="q2" style="width:100%; padding:0.5rem; margin:0.5rem 0 1rem 0;">
+                <select id="q2">
                     <option value="plan">Break it down into small dates on a calendar.</option>
                     <option value="focus">Sit down and get as much done as possible in one focus block.</option>
                     <option value="org">Gather all necessary materials, templates, and research links first.</option>
@@ -167,17 +220,65 @@
             </div>
         </section>
 
-        <section>
-            <h2>Famous Brain Case Study: Taylor Swift 📝</h2>
+        <!-- Case Study Section -->
+        <section id="case-study">
+            <h2>Famous Case Study: Taylor Swift 📝</h2>
             <div class="info-card" style="border-left-color: var(--accent-purple);">
                 <h3>Color-Coding & Voice Memos as Working Memory Supports</h3>
-                <p>Did you know Taylor Swift writes all her lyrics using three distinct "pens" (Fountain Pen, Glitter Gel Pen, and Quill) depending on the mood of the song? She also records short voice notes on her phone the second an idea strikes.</p>
-                <p><strong>Why this works:</strong> Her brain uses external systems (voice memos & visual cues) so her working memory doesn't get overloaded trying to remember musical ideas!</p>
+                <p>Did you know Taylor Swift writes all her lyrics using three distinct "pens" (Fountain Pen, Glitter Gel Pen, and Quill) depending on the mood of the song? She also records short voice notes on her phone the instant an idea strikes her.</p>
+                <p><strong>Why this works:</strong> Her brain uses external systems (voice memos & visual colors) so her working memory doesn't get overloaded trying to remember musical ideas!</p>
+            </div>
+        </section>
+
+        <!-- Independent Research Activity -->
+        <section id="research">
+            <h2>Mini Independent Research Lab 🔬</h2>
+            <p>Choose ONE brain mystery topic below to investigate independently. Spend 5-10 minutes researching it using your browser, then log your findings in your research planner below!</p>
+
+            <h3>Choose Your Topic Idea:</h3>
+            <div class="grid-2">
+                <div class="topic-card" id="top1" onclick="selectTopic('top1', 'How Sleep & Dreams Repair Your Prefrontal Cortex')">
+                    <strong>Topic A: Sleep & The Brain 😴</strong>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;">Discover what actually happens to your working memory and focus when you sleep 8-10 hours vs. staying up late.</p>
+                </div>
+
+                <div class="topic-card" id="top2" onclick="selectTopic('top2', 'The Pomodoro Technique: Why 25-Minute Work Blocks Work')">
+                    <strong>Topic B: The Science of Breaks ⏱️</strong>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;">Investigate why taking short 5-minute movement breaks actually helps your brain retain information faster.</p>
+                </div>
+
+                <div class="topic-card" id="top3" onclick="selectTopic('top3', 'How Video Games Affect Executive Function')">
+                    <strong>Topic C: Gaming & The Brain 🎮</strong>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;">Explore how fast-paced video games train visual processing speed, but can overwhelm impulse control.</p>
+                </div>
+
+                <div class="topic-card" id="top4" onclick="selectTopic('top4', 'The Myth of Multitasking: Brain Switching Costs')">
+                    <strong>Topic D: The Multitasking Trap 📱</strong>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;">Research what happens to your brain power when you switch between doing homework and checking notifications.</p>
+                </div>
+            </div>
+
+            <div class="interactive-box">
+                <h3>Your Mini Research Planner</h3>
+                <p><strong>Selected Topic:</strong> <span id="selected-topic-display" style="font-weight: bold; color: var(--primary-color);">None selected yet (Click a topic card above)</span></p>
+
+                <label for="res-fact1"><strong>1. What is ONE fascinating fact or scientific discovery you found about this topic?</strong></label>
+                <textarea id="res-fact1" rows="2" placeholder="I learned that..."></textarea>
+
+                <label for="res-fact2"><strong>2. How can a Grade 6 student use this information to improve their learning skills?</strong></label>
+                <textarea id="res-fact2" rows="2" placeholder="A grade 6 student could..."></textarea>
+
+                <button onclick="saveResearch()">Lock In Research Notes</button>
+
+                <div id="research-summary" class="hidden interactive-box" style="background-color: #dcfce7; border-color: #86efac; color: #166534; margin-top: 1rem;">
+                    🎉 <strong>Research Summary Saved!</strong> Great job completing your extension challenge.
+                </div>
             </div>
         </section>
     </main>
 
     <script>
+        // Quiz Calculation
         function calculatePower() {
             const q1 = document.getElementById('q1').value;
             const title = document.getElementById('power-title');
@@ -196,6 +297,50 @@
 
             document.getElementById('quiz-result').classList.remove('hidden');
         }
+
+        // Research Topic Selection
+        let currentTopic = '';
+        function selectTopic(cardId, topicName) {
+            document.querySelectorAll('.topic-card').forEach(card => card.classList.remove('selected'));
+            document.getElementById(cardId).classList.add('selected');
+            currentTopic = topicName;
+            document.getElementById('selected-topic-display').innerText = topicName;
+        }
+
+        // Save Research Notes
+        function saveResearch() {
+            let f1 = document.getElementById('res-fact1').value;
+            let f2 = document.getElementById('res-fact2').value;
+
+            if(!currentTopic) {
+                alert("Please select one of the research topic cards above first!");
+                return;
+            }
+            if(!f1 || !f2) {
+                alert("Please write down your answers in the research planner!");
+                return;
+            }
+
+            document.getElementById('research-summary').classList.remove('hidden');
+        }
+
+        // Scrollspy
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(sec => {
+                if(pageYOffset >= sec.offsetTop - 120) {
+                    current = sec.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(a => {
+                if(a.getAttribute('href').startsWith('#')) {
+                    a.classList.remove('active');
+                    if(a.getAttribute('href') === `#${current}`) {
+                        a.classList.add('active');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
