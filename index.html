@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Skills & Your Brain | Lesson 2</title>
+    <title>Learning Skills & Strategies | Grade 6</title>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -86,7 +86,7 @@
         /* Main Content */
         main {
             margin-left: 260px;
-            flex-1;
+            flex: 1;
             padding: 3rem 4rem;
             max-width: 900px;
         }
@@ -124,6 +124,15 @@
             margin-bottom: 1rem;
         }
 
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
         .badge {
             display: inline-block;
             background-color: #e0e7ff;
@@ -159,7 +168,7 @@
             margin: 1.5rem 0;
         }
 
-        textarea, input[type="text"] {
+        textarea, input[type="text"], select {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid var(--border-color);
@@ -237,76 +246,129 @@
 
     <aside>
         <h2>Learning Skills</h2>
-        <p.subtitle>Grade 6 • Lesson 2</p.subtitle>
+        <p class="subtitle">Grade 6 • LSS Module</p>
         <nav>
             <ul>
-                <li><a href="#welcome" class="active">1. Welcome Back</a></li>
-                <li><a href="#recap">2. Quick Recap</a></li>
-                <li><a href="#executive-function">3. The Control Center</a></li>
-                <li><a href="#game">4. Memory Challenge</a></li>
-                <li><a href="#tools">5. Upgrade Your Brain</a></li>
-                <li><a href="#reflection">6. Lesson Reflection</a></li>
+                <li><a href="#hook" class="active">1. The Hook</a></li>
+                <li><a href="#athletes">2. Lessons from Athletes</a></li>
+                <li><a href="#big-idea">3. Big Idea & Outline</a></li>
+                <li><a href="#carousel">4. Brainstorm Carousel</a></li>
+                <li><a href="#game">5. Memory Challenge</a></li>
+                <li><a href="#executive-function">6. Executive Function</a></li>
+                <li><a href="#journal">7. LSS Journal Exit Ticket</a></li>
             </ul>
         </nav>
     </aside>
 
     <main>
-        <!-- Welcome Section -->
-        <section id="welcome">
-            <span class="badge">Session 2 of Learning Skills</span>
-            <h1>Welcome Back, Brain Explorers! 🧠</h1>
-            <p>Today is our second meeting! Last time, we introduced the concept of how our brains learn. Today, we're diving deeper into how you can control your brain's "superpowers" to make school and everyday life easier.</p>
+        <!-- Hook Section -->
+        <section id="hook">
+            <span class="badge">Learning Skills & Strategies</span>
+            <h1>My Brain & Learning 🧠</h1>
             
+            <div class="interactive-box" style="border-left: 4px solid var(--accent-purple);">
+                <h3>Picture This...</h3>
+                <p><em>“A teacher once told this kid's mother: 'Your son will never be able to focus on anything.'”</em></p>
+                <p>Years later, he became one of the most successful athletes in history with <strong>28 Olympic medals (23 gold)</strong>!</p>
+                
+                <label for="guess-input"><strong>Who do you think it was?</strong></label>
+                <input type="text" id="guess-input" placeholder="Type your guess here...">
+                <button onclick="revealHook()">Reveal Answer</button>
+                
+                <div id="hook-answer" class="hidden" style="margin-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; font-weight: bold; color: var(--primary-color);">It was Michael Phelps! 🏊‍♂️</p>
+                    <p>Phelps was diagnosed with ADHD in sixth grade—the exact age that you are right now. As a child, he struggled to sit still and pay attention in class.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Athlete Connections -->
+        <section id="athletes">
+            <h2>Building Systems for Success</h2>
+            <p>Did Michael Phelps suddenly become good at focusing? Or did he build <strong>systems</strong> that helped his brain focus?</p>
+            
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3>🏊‍♂️ Michael Phelps</h3>
+                    <p>Swimming gave him <strong>structure</strong>. His life became organized around practices, routines, repetition, clear goals, and precise preparation with his coach.</p>
+                </div>
+                <div class="info-card">
+                    <h3>🤸‍♀️ Simone Biles</h3>
+                    <p>One of the greatest gymnasts in history didn't just practice gymnastics. Every year, she and her grandmother sat down to plan 12-month goals and short-term goals to assist her long-range ones.</p>
+                </div>
+            </div>
+
             <div class="interactive-box">
-                <h3>Warm-up Check-in (2 mins)</h3>
-                <p>On a scale of 1-5, how ready is your brain to learn today?</p>
-                <button onclick="setMood('😴 Low Energy')">1 - 2 (Waking Up)</button>
-                <button onclick="setMood('🙂 Ready')">3 - 4 (Ready to Go)</button>
-                <button onclick="setMood('🚀 Super Charged')">5 (Super Charged!)</button>
-                <p id="mood-response" style="margin-top: 1rem; font-weight: bold; color: var(--primary-color);"></p>
+                <h3>Think-Pair-Share 💬</h3>
+                <p>What helps successful athletes and learners succeed?</p>
+                <ul>
+                    <li>Having a routine and schedule</li>
+                    <li>Setting clear goals & breaking big goals into smaller tasks</li>
+                    <li>Repetition & practicing even when they don't feel like it</li>
+                    <li>Having accountability and coaches/teachers to support them</li>
+                </ul>
+                <p><strong>Key Takeaway:</strong> Organization and time management aren't about being a "naturally organized person." They are about building systems that help your brain do what it needs to do!</p>
             </div>
         </section>
 
-        <!-- Recap Section -->
-        <section id="recap">
-            <h2>1. Quick Recap: Last Time We Met</h2>
-            <p>During our first lesson, we learned that your brain isn't fixed—it grows stronger every time you try hard things. This is called <strong>Neuroplasticity</strong>.</p>
+        <!-- Big Idea & Course Outline -->
+        <section id="big-idea">
+            <h2>The BIG Idea & Course Outline</h2>
             
+            <div class="info-card" style="border-left-color: var(--accent-green); margin-bottom: 1.5rem;">
+                <h3>💡 Big Idea</h3>
+                <p>Successful learners intentionally organize their materials, time, and thinking so they can reduce stress, increase independence, and learn more effectively.</p>
+                <p><strong>Essential Question:</strong> How can I organize myself so my brain has more energy for learning?</p>
+            </div>
+
+            <h3>Course Outline (What We Will Cover)</h3>
             <div class="grid-2">
                 <div class="info-card">
-                    <h3>Neurons & Pathways</h3>
-                    <p>Think of your brain like a forest. When you learn something new, you build a small trail. The more you practice, the wider and smoother that trail gets!</p>
+                    <strong>Unit 1:</strong> Organization and Time Management
                 </div>
                 <div class="info-card">
-                    <h3>Mistakes are Signals</h3>
-                    <p>Making mistakes doesn't mean you aren't smart. It just means your brain is building new pathways. Keep pushing through!</p>
+                    <strong>Unit 2:</strong> Learning How To Learn
+                </div>
+                <div class="info-card">
+                    <strong>Unit 3:</strong> Note Taking and Processing Information
+                </div>
+                <div class="info-card">
+                    <strong>Unit 4:</strong> Independence, Responsibility and Self Regulation
                 </div>
             </div>
         </section>
 
-        <!-- Executive Functioning -->
-        <section id="executive-function">
-            <h2>2. The Brain's Control Center</h2>
-            <p>Imagine your brain is a busy airport. Planes are taking off and landing everywhere. Who keeps everything organized so planes don't crash?</p>
-            <p><strong>The Air Traffic Controller!</strong></p>
-            <p>In your brain, this is called your <strong>Executive Function Skills</strong>. Located right behind your forehead (the Prefrontal Cortex), these skills help you plan, focus, and manage your time.</p>
+        <!-- Brainstorm Carousel -->
+        <section id="carousel">
+            <h2>Clearing Your Path For Learning</h2>
+            <p>Hop onto the <strong>Brainstorm Carousel</strong>! We are looking at 3 key questions about how we learn:</p>
 
             <div class="grid-2">
-                <div class="info-card" style="border-left-color: var(--accent-purple);">
-                    <h3>🧠 Working Memory</h3>
-                    <p>Holding onto information in your head while using it (like remembering a multi-step instruction from a teacher).</p>
-                </div>
                 <div class="info-card" style="border-left-color: var(--accent-orange);">
-                    <h3>🛑 Impulse Control</h3>
-                    <p>Stopping yourself from reacting immediately (like waiting your turn to speak or ignoring your phone while doing homework).</p>
+                    <h3>Question 1</h3>
+                    <p>What stands in the way of you learning?</p>
                 </div>
+                <div class="info-card" style="border-left-color: var(--accent-purple);">
+                    <h3>Question 2</h3>
+                    <p>What is an ideal learning environment? (What & Why?)</p>
+                </div>
+            </div>
+            <div class="info-card" style="border-left-color: var(--primary-color);">
+                <h3>Question 3</h3>
+                <p>What could make you become organized?</p>
+            </div>
+
+            <div class="interactive-box" style="margin-top: 1.5rem;">
+                <h3>Reflect on Your Environment</h3>
+                <label for="obstacle-input"><strong>What is one thing that usually stands in the way of your learning?</strong></label>
+                <textarea id="obstacle-input" rows="2" placeholder="e.g., Too much noise, a messy desk, feeling tired, getting distracted by devices..."></textarea>
             </div>
         </section>
 
         <!-- Mini Game -->
         <section id="game">
-            <h2>3. Test Your Working Memory! 🎮</h2>
-            <p>Working memory is like a mental sticky note. Let's see how many steps your brain's controller can keep track of in this pattern game!</p>
+            <h2>Test Your Working Memory! 🎮</h2>
+            <p>Working memory holds onto information while your brain uses it. Test your focus with this pattern challenge!</p>
             
             <div class="game-container">
                 <h3 id="game-status" style="color: white; margin-bottom: 1rem;">Click "Start Game" to begin</h3>
@@ -321,55 +383,75 @@
             </div>
         </section>
 
-        <!-- Strategies Section -->
-        <section id="tools">
-            <h2>4. Upgrade Your Brain Tools</h2>
-            <p>Nobody is born with perfect executive function skills. We have to build tools to support our brains when they get overwhelmed!</p>
+        <!-- Executive Functioning -->
+        <section id="executive-function">
+            <h2>Executive Function: Say What? 🤔</h2>
+            <p><strong>Executive Functioning</strong> is a group of brain skills that help us manage our learning, our time, our materials, and ourselves.</p>
+            
+            <div class="info-card" style="border-left-color: var(--accent-purple); margin: 1rem 0;">
+                <h3>👑 Think of these skills as your brain's CEO!</h3>
+                <p>Just like a CEO manages a big company, your Executive Functions manage your focus, actions, and decisions.</p>
+            </div>
 
             <div class="interactive-box">
-                <h3>Scenario Challenge</h3>
-                <p><strong>Scenario:</strong> You have a science project due in two weeks, math homework due tomorrow, and soccer practice tonight. You feel overwhelmed and don't know where to start.</p>
-                <label for="strategy-select"><strong>What is the best Executive Function strategy to use?</strong></label>
-                <select id="strategy-select" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0 1rem 0; border-radius: 4px;">
-                    <option value="">-- Choose a Strategy --</option>
-                    <option value="wrong1">Ignore all of it and play video games.</option>
-                    <option value="correct">Break the big project into 3 small steps and write them in an agenda.</option>
-                    <option value="wrong2">Try to do everything at the exact same time late at night.</option>
+                <h3>Matching Challenge</h3>
+                <p>Which brain skill acts as the "brakes" to stop you from acting without thinking?</p>
+                <select id="ef-select">
+                    <option value="">-- Select an Executive Function --</option>
+                    <option value="wrong1">Working Memory</option>
+                    <option value="correct">Impulse Control / Self-Regulation</option>
+                    <option value="wrong2">Organization</option>
                 </select>
-                <button onclick="checkStrategy()">Check Answer</button>
-                <p id="strategy-feedback" style="margin-top: 1rem; font-weight: bold;"></p>
+                <button onclick="checkEF()">Check Answer</button>
+                <p id="ef-feedback" style="margin-top: 1rem; font-weight: bold;"></p>
             </div>
         </section>
 
         <!-- Reflection / Exit Ticket -->
-        <section id="reflection">
-            <h2>5. Lesson Exit Ticket</h2>
-            <p>Before our 45 minutes are up today, take a moment to record your thoughts. Your teacher may review these responses!</p>
+        <section id="journal">
+            <h2>LSS Journal Exit Ticket 📖</h2>
+            <p>Take a few minutes to reflect. Fill in your responses below as honestly as you can—this is about understanding who you are as a learner so we can build the best tools for you!</p>
 
             <form id="exit-ticket" onsubmit="submitForm(event)">
-                <label for="student-name">Your First & Last Name:</label>
-                <input type="text" id="student-name" required placeholder="e.g. Alex Smith">
+                <label for="student-name">Your Full Name:</label>
+                <input type="text" id="student-name" required placeholder="e.g., Alex Smith">
 
-                <label for="learn-input">What is ONE new thing you learned about your brain today?</label>
-                <textarea id="learn-input" rows="3" required placeholder="Today I learned..."></textarea>
+                <label for="prompt-input">Complete the prompt: "I think the Learning Strategies course will be good for me because..."</label>
+                <textarea id="prompt-input" rows="3" required placeholder="I think this course will help me..."></textarea>
 
-                <label for="goal-input">Which skill do you want to practice this week? (e.g., Staying focused, organizing my desk, using an agenda)</label>
-                <textarea id="goal-input" rows="3" required placeholder="This week I will..."></textarea>
+                <label for="skill-input">Identify ONE learning or organizational skill you would like to improve on this year:</label>
+                <textarea id="skill-input" rows="2" required placeholder="I want to work on..."></textarea>
 
-                <button type="submit">Submit Exit Ticket</button>
+                <button type="submit">Submit Entry to LSS Journal</button>
             </form>
             
             <div id="completion-message" class="hidden interactive-box" style="background-color: #dcfce7; border: 1px solid #86efac; color: #166534; margin-top: 1rem;">
-                🎉 <strong>Great job today!</strong> Your exit ticket has been recorded. You may now wait quietly for further instructions from your teacher.
+                🎉 <strong>Journal Entry Submitted!</strong> You have completed today's module.
             </div>
         </section>
     </main>
 
     <script>
-        // Mood Checker
-        function setMood(mood) {
-            const response = document.getElementById('mood-response');
-            response.innerText = `Logged: ${mood}. Let's get to work!`;
+        // Reveal Hook Answer
+        function revealHook() {
+            document.getElementById('hook-answer').classList.remove('hidden');
+        }
+
+        // Executive Function Check
+        function checkEF() {
+            const val = document.getElementById('ef-select').value;
+            const feedback = document.getElementById('ef-feedback');
+            
+            if (val === 'correct') {
+                feedback.style.color = 'var(--accent-green)';
+                feedback.innerText = 'Spot on! Impulse Control / Self-Regulation acts as your brain\'s brakes!';
+            } else if (val === '') {
+                feedback.style.color = 'black';
+                feedback.innerText = 'Please select an option first.';
+            } else {
+                feedback.style.color = '#ef4444';
+                feedback.innerText = 'Not quite! Think about which skill stops sudden actions or reactions.';
+            }
         }
 
         // Memory Game Logic
@@ -425,7 +507,7 @@
 
             const currentIndex = playerSequence.length - 1;
             if (playerSequence[currentIndex] !== sequence[currentIndex]) {
-                document.getElementById('game-status').innerText = `Game Over! You made it to Level ${level}.`;
+                document.getElementById('game-status').innerText = `Game Over! You reached Level ${level}.`;
                 isPlaying = false;
                 document.getElementById('start-game-btn').style.display = 'inline-block';
                 document.getElementById('start-game-btn').innerText = 'Try Again';
@@ -435,23 +517,6 @@
             if (playerSequence.length === sequence.length) {
                 document.getElementById('game-status').innerText = 'Great Job! Loading next level...';
                 setTimeout(nextRound, 1000);
-            }
-        }
-
-        // Strategy Check
-        function checkStrategy() {
-            const val = document.getElementById('strategy-select').value;
-            const feedback = document.getElementById('strategy-feedback');
-            
-            if (val === 'correct') {
-                feedback.style.color = 'var(--accent-green)';
-                feedback.innerText = 'Correct! Breaking large tasks into smaller ones reduces stress and helps your prefrontal cortex stay focused!';
-            } else if (val === '') {
-                feedback.style.color = 'black';
-                feedback.innerText = 'Please select an answer first.';
-            } else {
-                feedback.style.color = '#ef4444';
-                feedback.innerText = 'Not quite! Think about which option helps your brain plan ahead effectively.';
             }
         }
 
