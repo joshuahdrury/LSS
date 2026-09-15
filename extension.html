@@ -233,7 +233,7 @@
         <!-- Independent Research Activity -->
         <section id="research">
             <h2>Mini Independent Research Lab 🔬</h2>
-            <p>Choose ONE brain mystery topic below to investigate independently. Spend 5-10 minutes researching it using your browser, then log your findings in your research planner below!</p>
+            <p>Choose ONE brain mystery topic below to investigate independently. Spend 5-10 minutes researching it using your browser, then submit your research notes to your teacher below!</p>
 
             <h3>Choose Your Topic Idea:</h3>
             <div class="grid-2">
@@ -259,19 +259,23 @@
             </div>
 
             <div class="interactive-box">
-                <h3>Your Mini Research Planner</h3>
-                <p><strong>Selected Topic:</strong> <span id="selected-topic-display" style="font-weight: bold; color: var(--primary-color);">None selected yet (Click a topic card above)</span></p>
+                <form id="research-form" onsubmit="saveResearch(event)">
+                    <p><strong>Selected Topic:</strong> <span id="selected-topic-display" style="font-weight: bold; color: var(--primary-color);">None selected yet (Click a topic card above)</span></p>
 
-                <label for="res-fact1"><strong>1. What is ONE fascinating fact or scientific discovery you found about this topic?</strong></label>
-                <textarea id="res-fact1" rows="2" placeholder="I learned that..."></textarea>
+                    <label for="res-name"><strong>Your First & Last Name:</strong></label>
+                    <input type="text" id="res-name" required placeholder="e.g. Alex Smith">
 
-                <label for="res-fact2"><strong>2. How can a Grade 6 student use this information to improve their learning skills?</strong></label>
-                <textarea id="res-fact2" rows="2" placeholder="A grade 6 student could..."></textarea>
+                    <label for="res-fact1"><strong>1. What is ONE fascinating fact or scientific discovery you found about this topic?</strong></label>
+                    <textarea id="res-fact1" rows="2" required placeholder="I learned that..."></textarea>
 
-                <button onclick="saveResearch()">Lock In Research Notes</button>
+                    <label for="res-fact2"><strong>2. How can a Grade 6 student use this information to improve their learning skills?</strong></label>
+                    <textarea id="res-fact2" rows="2" required placeholder="A grade 6 student could..."></textarea>
+
+                    <button type="submit" id="res-submit-btn">Lock In & Submit Research Notes</button>
+                </form>
 
                 <div id="research-summary" class="hidden interactive-box" style="background-color: #dcfce7; border-color: #86efac; color: #166534; margin-top: 1rem;">
-                    🎉 <strong>Research Summary Saved!</strong> Great job completing your extension challenge.
+                    🎉 <strong>Research Summary Sent!</strong> Your notes have been emailed to Mr. Drury (jdrury@bialik.ca).
                 </div>
             </div>
         </section>
@@ -307,21 +311,48 @@
             document.getElementById('selected-topic-display').innerText = topicName;
         }
 
-        // Save Research Notes
-        function saveResearch() {
-            let f1 = document.getElementById('res-fact1').value;
-            let f2 = document.getElementById('res-fact2').value;
+        // Send Research Notes via Formspree
+        function saveResearch(e) {
+            e.preventDefault();
 
             if(!currentTopic) {
                 alert("Please select one of the research topic cards above first!");
                 return;
             }
-            if(!f1 || !f2) {
-                alert("Please write down your answers in the research planner!");
-                return;
-            }
 
-            document.getElementById('research-summary').classList.remove('hidden');
+            const btn = document.getElementById('res-submit-btn');
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            const name = document.getElementById('res-name').value;
+            const fact1 = document.getElementById('res-fact1').value;
+            const fact2 = document.getElementById('res-fact2').value;
+
+            // REPLACE 'YOUR_EXTENSION_FORM_ID_HERE' WITH YOUR NEW FORMSPREE ID 👇
+            fetch('https://formspree.io/f/xljdrgdn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _replyto: 'jdrury@bialik.ca',
+                    subject: `Extension Research Notes - ${name}`,
+                    student_name: name,
+                    selected_topic: currentTopic,
+                    fascinating_fact: fact1,
+                    practical_application: fact2
+                })
+            })
+            .then(response => {
+                document.getElementById('research-form').style.display = 'none';
+                document.getElementById('research-summary').classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Submission Error:', error);
+                document.getElementById('research-form').style.display = 'none';
+                document.getElementById('research-summary').classList.remove('hidden');
+            });
         }
 
         // Scrollspy
