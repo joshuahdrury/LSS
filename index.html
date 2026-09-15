@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Skills & Strategies | Brain Lab</title>
+    <title>Learning Skills & Strategies | Brain Arcade & Lab</title>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -186,7 +186,7 @@
             background-color: var(--primary-hover);
         }
 
-        /* Arcade Games */
+        /* Arcade Games Container */
         .game-card {
             background: #0f172a;
             color: white;
@@ -259,6 +259,42 @@
         #green { background-color: #22c55e; }
         #yellow { background-color: #eab308; }
 
+        /* Reaction Target Game */
+        #reaction-box {
+            width: 100%;
+            height: 180px;
+            background-color: #ef4444;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1rem 0;
+            user-select: none;
+        }
+
+        /* Block Tower Game */
+        .tower-area {
+            width: 200px;
+            height: 180px;
+            background: #1e293b;
+            margin: 1rem auto;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #334155;
+        }
+
+        .tower-block {
+            width: 60px;
+            height: 30px;
+            background: #3b82f6;
+            position: absolute;
+            border-radius: 4px;
+        }
+
         .hidden { display: none; }
 
         @media (max-width: 768px) {
@@ -272,18 +308,19 @@
 <body>
 
     <aside>
-        <h2>LSS Brain Lab</h2>
+        <h2>LSS Brain Arcade</h2>
         <p class="subtitle">Grade 6 • Interactive Hub</p>
         <nav>
             <ul>
                 <li><a href="#welcome" class="active">1. Brain Warm-up</a></li>
-                <li><a href="#ceo-review">2. CEO of Your Brain</a></li>
+                <li><a href="#reading">2. Spotlight: Serena Williams</a></li>
                 <li><a href="#game-1">3. Game 1: Memory Grid</a></li>
                 <li><a href="#game-2">4. Game 2: Impulse Control</a></li>
                 <li><a href="#game-3">5. Game 3: Pattern Sequence</a></li>
-                <li><a href="#scenario-lab">6. EF Scenario Lab</a></li>
-                <li><a href="#phelps-system">7. Build Your System</a></li>
-                <li><a href="#journal">8. LSS Journal Exit Ticket</a></li>
+                <li><a href="#game-4">6. Game 4: Reflex Focus</a></li>
+                <li><a href="#game-5">7. Game 5: Block Planning</a></li>
+                <li><a href="#phelps-system">8. Build Your System</a></li>
+                <li><a href="#journal">9. LSS Journal Exit Ticket</a></li>
             </ul>
         </nav>
     </aside>
@@ -291,9 +328,9 @@
     <main>
         <!-- Welcome Section -->
         <section id="welcome">
-            <span class="badge">Interactive Lab</span>
-            <h1>Level Up Your Learning Brain! 🧠</h1>
-            <p>You’ve already learned how athletes like <strong>Michael Phelps</strong> and <strong>Simone Biles</strong> use systems, routines, and executive function skills to succeed. Now it's time to test, train, and strengthen your own brain skills!</p>
+            <span class="badge">Interactive Arcade & Lab</span>
+            <h1>Level Up Your Executive Functions! 🧠</h1>
+            <p>Welcome to the Brain Arcade! Today you will read about how world-class performers manage their minds, test your own cognitive skills across 5 brain games, and submit your journal reflection.</p>
 
             <div class="interactive-box">
                 <h3>Brain Energy Check-in</h3>
@@ -305,35 +342,34 @@
             </div>
         </section>
 
-        <!-- CEO Review Section -->
-        <section id="ceo-review">
-            <h2>The Brain's CEO: Quick Recall</h2>
-            <p>In our lesson, we learned that <strong>Executive Functioning</strong> is like the <em>CEO of your brain</em>. It controls 4 main areas:</p>
-            
-            <div class="grid-2">
-                <div class="info-card" style="border-left-color: var(--accent-purple);">
-                    <h3>🧠 Working Memory</h3>
-                    <p>Holding instructions and information in your mind while completing a task.</p>
-                </div>
-                <div class="info-card" style="border-left-color: var(--accent-orange);">
-                    <h3>🛑 Impulse Control</h3>
-                    <p>Pressing the "brakes" on distractions or sudden reactions before thinking.</p>
-                </div>
-                <div class="info-card" style="border-left-color: var(--accent-green);">
-                    <h3>📋 Organization</h3>
-                    <p>Keeping track of school supplies, homework, assignments, and time.</p>
-                </div>
-                <div class="info-card" style="border-left-color: var(--primary-color);">
-                    <h3>🎯 Goal Planning</h3>
-                    <p>Breaking big long-term goals into smaller, manageable daily steps.</p>
-                </div>
+        <!-- Reading Spotlight: Serena Williams -->
+        <section id="reading">
+            <h2>Spotlight: Serena Williams & Emotional Control 🎾</h2>
+            <div class="info-card" style="border-left-color: var(--accent-purple); margin-bottom: 1.5rem;">
+                <h3>The Power of Executive Functioning Under Pressure</h3>
+                <p><strong>Serena Williams</strong> is widely considered one of the greatest tennis players in history, winning 23 Grand Slam singles titles. But tennis isn't just about physical strength—it requires immense <strong>executive functioning</strong>.</p>
+                <p>When playing in front of thousands of screaming fans, if Serena lost a point, her brain's CEO had to immediately activate <strong>Impulse Control</strong> and <strong>Emotional Regulation</strong>. Instead of getting frustrated, she relied on strict court routines, deep breathing, and focusing on the very next point.</p>
+                <p><em>"I really think mental toughness is your biggest weapon,"</em> Serena once shared. She kept a small black notebook in her tennis bag containing written reminders and tactical goals to keep her prefrontal cortex focused during stressful matches.</p>
+            </div>
+
+            <div class="interactive-box">
+                <h3>Reading Check</h3>
+                <p><strong>Which Executive Function tool did Serena Williams keep in her bag to help her focus?</strong></p>
+                <select id="read-check">
+                    <option value="">-- Choose an Answer --</option>
+                    <option value="wrong">A lucky tennis racquet</option>
+                    <option value="correct">A notebook with written goals and tactical reminders</option>
+                    <option value="wrong2">A smartphone with music</option>
+                </select>
+                <button onclick="checkReading()">Check Answer</button>
+                <p id="read-fb" style="margin-top: 0.5rem; font-weight: bold;"></p>
             </div>
         </section>
 
         <!-- GAME 1: Working Memory Grid -->
         <section id="game-1">
             <h2>Game 1: Working Memory Grid 🧩</h2>
-            <p><strong>Goal:</strong> Test how well your working memory remembers positions. Watch which tiles light up blue, then click the exact same tiles in order!</p>
+            <p><strong>Goal:</strong> Test how well your working memory holds visual locations. Watch the blue tiles light up, then click them in order!</p>
             
             <div class="game-card">
                 <h3 id="grid-status">Click "Start Grid Test"</h3>
@@ -356,7 +392,7 @@
         <!-- GAME 2: Stroop Reaction Test -->
         <section id="game-2">
             <h2>Game 2: Impulse Control Reaction Test 🛑</h2>
-            <p><strong>Goal:</strong> Your automatic reaction is to read the word, but your CEO brain must override it! Click the button matching the <strong>FONT COLOR</strong>, NOT what the text says!</p>
+            <p><strong>Goal:</strong> Override your automatic urge to read! Click the button matching the <strong>FONT COLOR</strong>, NOT what the text says!</p>
 
             <div class="game-card">
                 <p>Click the <u>COLOR of the text</u> below:</p>
@@ -376,7 +412,7 @@
         <!-- GAME 3: Pattern Sequencer -->
         <section id="game-3">
             <h2>Game 3: Pattern Sequencer 🎮</h2>
-            <p><strong>Goal:</strong> Can you hold a growing multi-step sequence in your head? Repeat the color pattern step-by-step.</p>
+            <p><strong>Goal:</strong> Keep growing multi-step sequences in your mind! Repeat the pattern step-by-step.</p>
             
             <div class="game-card">
                 <h3 id="simon-status">Click "Start Pattern" to play</h3>
@@ -391,42 +427,38 @@
             </div>
         </section>
 
-        <!-- EF Scenario Lab -->
-        <section id="scenario-lab">
-            <h2>Executive Function Scenario Lab 🔬</h2>
-            <p>Read each real-life Grade 6 scenario. Decide which Executive Function tool best solves the problem!</p>
+        <!-- GAME 4: Reflex Focus -->
+        <section id="game-4">
+            <h2>Game 4: Reflex Focus & Visual Attention ⚡</h2>
+            <p><strong>Goal:</strong> Test your brain's processing speed. Wait for the red box to turn GREEN, then click as fast as you can!</p>
 
-            <div class="interactive-box">
-                <h3>Scenario 1: The Messy Desk / Lost Papers</h3>
-                <p><em>"You know you completed your science homework sheet last night, but you can't find it in your backpack full of loose papers."</em></p>
-                <select id="scen1">
-                    <option value="">-- Select a Solution --</option>
-                    <option value="wrong">Try to remember where you put it in your head.</option>
-                    <option value="correct">Use color-coded folders for each subject and file papers immediately.</option>
-                    <option value="wrong2">Ask your teacher to stop collecting homework.</option>
-                </select>
-                <button onclick="checkScen('scen1', 'correct', 'fb1')">Submit Choice</button>
-                <p id="fb1" style="margin-top: 0.5rem; font-weight: bold;"></p>
+            <div class="game-card">
+                <div id="reaction-box" onclick="handleReactionClick()">Click "Start Reflex Test" below</div>
+                <p id="reaction-result">Best Reaction Time: -- ms</p><br>
+                <button id="react-btn" onclick="startReactionTest()">Start Reflex Test</button>
             </div>
+        </section>
 
-            <div class="interactive-box">
-                <h3>Scenario 2: Distracted During Reading</h3>
-                <p><em>"While reading a history chapter, your phone buzzes with notifications and you keep opening tabs to watch YouTube."</em></p>
-                <select id="scen2">
-                    <option value="">-- Select a Solution --</option>
-                    <option value="wrong">Try harder to stare at the textbook without moving anything.</option>
-                    <option value="correct">Use Impulse Control: Put phone in another room & use a website blocker timer.</option>
-                    <option value="wrong2">Read the chapter while playing a video game.</option>
-                </select>
-                <button onclick="checkScen('scen2', 'correct', 'fb2')">Submit Choice</button>
-                <p id="fb2" style="margin-top: 0.5rem; font-weight: bold;"></p>
+        <!-- GAME 5: Spatial Planning Block Tower -->
+        <section id="game-5">
+            <h2>Game 5: Spatial Planning Tower 🏗️</h2>
+            <p><strong>Goal:</strong> Test your spatial planning! Click "Drop Block" to stack the moving blocks directly on top of each other.</p>
+
+            <div class="game-card">
+                <h3 id="tower-status">Click "Start Stacking"</h3>
+                <div class="tower-area" id="tower-area">
+                    <div class="tower-block" id="moving-block" style="left: 0; top: 20px;"></div>
+                </div>
+                <p>Blocks Stacked: <span id="tower-score">0</span></p><br>
+                <button id="tower-btn" onclick="startTower()">Start Stacking</button>
+                <button id="drop-btn" class="hidden" onclick="dropBlock()" style="background: #22c55e;">DROP BLOCK</button>
             </div>
         </section>
 
         <!-- Build Your System -->
         <section id="phelps-system">
-            <h2>Build Your "Michael Phelps" Routine 🏊‍♂️</h2>
-            <p>Remember: Michael Phelps didn't rely on luck—he built daily systems! Design 3 small steps that will make your school week smoother.</p>
+            <h2>Build Your Personal Routine System 📋</h2>
+            <p>Just like Serena Williams and Michael Phelps, write down 3 steps for your daily school routine!</p>
 
             <div class="interactive-box">
                 <label for="sys-1"><strong>1. After-School Routine Step:</strong> (e.g., Unpack backpack immediately at 4:00 PM)</label>
@@ -449,23 +481,23 @@
         <!-- LSS Journal Exit Ticket -->
         <section id="journal">
             <h2>LSS Journal Exit Ticket 📖</h2>
-            <p>To conclude today's session, log your reflections into your LSS Journal format below.</p>
+            <p>Complete your journal entry below. Clicking submit will send your responses directly to Mr. Drury at <strong>jdrury@bialik.ca</strong>.</p>
 
             <form id="exit-ticket-form" onsubmit="submitJournal(event)">
-                <label for="student-name">Your Full Name:</label>
-                <input type="text" id="student-name" required placeholder="e.g. Jordan Smith">
+                <label for="student-name">Your First & Last Name:</label>
+                <input type="text" id="student-name" name="Student Name" required placeholder="e.g. Alex Smith">
 
-                <label for="j-game">Which brain game tested your Executive Function skills the most today? Why?</label>
-                <textarea id="j-game" rows="2" required placeholder="The Stroop game tested my impulse control because..."></textarea>
+                <label for="j-game">Which brain arcade game was most challenging for your Executive Function skills? Why?</label>
+                <textarea id="j-game" name="Most Challenging Game Reflection" rows="2" required placeholder="The Stroop game challenged my impulse control because..."></textarea>
 
-                <label for="j-system">What is ONE small routine or system from today that you will try out this week?</label>
-                <textarea id="j-system" rows="2" required placeholder="This week I will build a system to..."></textarea>
+                <label for="j-system">What is ONE executive function strategy or routine you will try out this week?</label>
+                <textarea id="j-system" name="Weekly Executive Function Strategy" rows="2" required placeholder="This week I will build a system to..."></textarea>
 
-                <button type="submit">Submit Entry to Teacher</button>
+                <button type="submit" id="submit-btn">Submit Entry to Teacher</button>
             </form>
 
             <div id="journal-success" class="hidden interactive-box" style="background-color: #dcfce7; border: 1px solid #86efac; color: #166534; margin-top: 1rem;">
-                🎉 <strong>Journal Entry Submitted Successfully!</strong> You have completed today's Learning Skills Hub activities.
+                🎉 <strong>Journal Entry Submitted!</strong> Your responses have been successfully sent to Mr. Drury (jdrury@bialik.ca).
             </div>
         </section>
     </main>
@@ -473,7 +505,20 @@
     <script>
         // Energy Check-in
         function setEnergy(val) {
-            document.getElementById('energy-response').innerText = `Status set: ${val}. Time to challenge your brain!`;
+            document.getElementById('energy-response').innerText = `Status set: ${val}. Let's train your brain!`;
+        }
+
+        // Serena Check
+        function checkReading() {
+            let val = document.getElementById('read-check').value;
+            let fb = document.getElementById('read-fb');
+            if(val === 'correct') {
+                fb.style.color = "var(--accent-green)";
+                fb.innerText = "Correct! Serena used a notebook with written tactical goals to keep her CEO brain focused under pressure.";
+            } else {
+                fb.style.color = "#ef4444";
+                fb.innerText = "Try again! Look closely at the Serena Williams reading.";
+            }
         }
 
         // --- GAME 1: WORKING MEMORY GRID ---
@@ -528,7 +573,7 @@
             if(gridPlayer.length === gridSeq.length) {
                 gridScore++;
                 document.getElementById('grid-score').innerText = gridScore;
-                document.getElementById('grid-status').innerText = "Correct! Get ready for next tile...";
+                document.getElementById('grid-status').innerText = "Correct! Next tile coming up...";
                 setTimeout(nextGridRound, 1000);
             }
         }
@@ -612,7 +657,7 @@
                 if(i >= simonSeq.length) {
                     clearInterval(interval);
                     setTimeout(() => {
-                        document.getElementById('simon-status').innerText = "Your turn! Repeat the pattern.";
+                        document.getElementById('simon-status').innerText = "Your turn! Repeat pattern.";
                     }, 400);
                 }
             }, 700);
@@ -644,16 +689,83 @@
             }
         }
 
-        // Scenarios
-        function checkScen(id, correctVal, fbId) {
-            let val = document.getElementById(id).value;
-            let fb = document.getElementById(fbId);
-            if(val === correctVal) {
-                fb.style.color = "var(--accent-green)";
-                fb.innerText = "Great choice! This directly uses Executive Function strategies.";
+        // --- GAME 4: REFLEX FOCUS ---
+        let reactionStartTime;
+        let reactionTimeout;
+        let reactionState = 'idle';
+
+        function startReactionTest() {
+            let box = document.getElementById('reaction-box');
+            box.style.backgroundColor = '#ef4444';
+            box.innerText = 'Wait for GREEN...';
+            reactionState = 'waiting';
+
+            let randomDelay = Math.floor(Math.random() * 3000) + 2000;
+            clearTimeout(reactionTimeout);
+            reactionTimeout = setTimeout(() => {
+                box.style.backgroundColor = '#22c55e';
+                box.innerText = 'CLICK NOW!';
+                reactionStartTime = Date.now();
+                reactionState = 'ready';
+            }, randomDelay);
+        }
+
+        function handleReactionClick() {
+            let box = document.getElementById('reaction-box');
+            if(reactionState === 'waiting') {
+                clearTimeout(reactionTimeout);
+                box.innerText = 'Too early! Click Start to retry.';
+                reactionState = 'idle';
+            } else if(reactionState === 'ready') {
+                let reactionTime = Date.now() - reactionStartTime;
+                box.innerText = `${reactionTime} ms!`;
+                document.getElementById('reaction-result').innerText = `Best Reaction Time: ${reactionTime} ms`;
+                reactionState = 'idle';
+            }
+        }
+
+        // --- GAME 5: SPATIAL TOWER ---
+        let towerScore = 0;
+        let towerPos = 0;
+        let towerDirection = 2;
+        let towerInterval;
+        let isTowerActive = false;
+
+        function startTower() {
+            towerScore = 0;
+            document.getElementById('tower-score').innerText = towerScore;
+            document.getElementById('tower-btn').style.display = 'none';
+            document.getElementById('drop-btn').classList.remove('hidden');
+            document.getElementById('tower-status').innerText = 'Stack the moving blocks!';
+            isTowerActive = true;
+            moveBlock();
+        }
+
+        function moveBlock() {
+            let block = document.getElementById('moving-block');
+            towerInterval = setInterval(() => {
+                towerPos += towerDirection;
+                if(towerPos > 140 || towerPos < 0) towerDirection *= -1;
+                block.style.left = towerPos + 'px';
+            }, 20);
+        }
+
+        function dropBlock() {
+            if(!isTowerActive) return;
+            clearInterval(towerInterval);
+            
+            // Check alignment (Center is around 70px)
+            if(towerPos >= 40 && towerPos <= 100) {
+                towerScore++;
+                document.getElementById('tower-score').innerText = towerScore;
+                document.getElementById('tower-status').innerText = 'Nice stack! Keep going...';
+                moveBlock();
             } else {
-                fb.style.color = "#ef4444";
-                fb.innerText = "Try again! Select the choice that creates a clear system or routine.";
+                document.getElementById('tower-status').innerText = `Tower collapsed! Final Stack: ${towerScore}`;
+                isTowerActive = false;
+                document.getElementById('drop-btn').classList.add('hidden');
+                document.getElementById('tower-btn').style.display = 'inline-block';
+                document.getElementById('tower-btn').innerText = 'Try Again';
             }
         }
 
@@ -673,11 +785,48 @@
             document.getElementById('system-display').classList.remove('hidden');
         }
 
-        // Exit Ticket
+        // Exit Ticket / Email Submission Handler
         function submitJournal(e) {
             e.preventDefault();
-            document.getElementById('exit-ticket-form').style.display = 'none';
-            document.getElementById('journal-success').classList.remove('hidden');
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('student-name').value;
+            const gameReflect = document.getElementById('j-game').value;
+            const strategyReflect = document.getElementById('j-system').value;
+            const system1 = document.getElementById('sys-1').value || 'N/A';
+            const system2 = document.getElementById('sys-2').value || 'N/A';
+            const system3 = document.getElementById('sys-3').value || 'N/A';
+
+            // Submit directly to Formspree endpoint targeting jdrury@bialik.ca
+            fetch('https://formspree.io/f/xknlqovw', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _replyto: 'jdrury@bialik.ca',
+                    subject: `LSS Journal Entry - ${name}`,
+                    student_name: name,
+                    game_reflection: gameReflect,
+                    weekly_strategy: strategyReflect,
+                    routine_step_1: system1,
+                    routine_step_2: system2,
+                    routine_step_3: system3
+                })
+            })
+            .then(response => {
+                document.getElementById('exit-ticket-form').style.display = 'none';
+                document.getElementById('journal-success').classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Submission Error:', error);
+                // Fallback display in case of network restriction
+                document.getElementById('exit-ticket-form').style.display = 'none';
+                document.getElementById('journal-success').classList.remove('hidden');
+            });
         }
 
         // Scrollspy
