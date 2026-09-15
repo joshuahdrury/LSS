@@ -84,6 +84,18 @@
             color: white;
         }
 
+        nav a.ext-link {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px dashed #f59e0b;
+            margin-top: 1rem;
+        }
+
+        nav a.ext-link:hover {
+            background-color: #f59e0b;
+            color: #0f172a;
+        }
+
         /* Main Content */
         main {
             margin-left: 270px;
@@ -170,7 +182,8 @@
             font-size: 0.95rem;
         }
 
-        button {
+        button, .btn-link {
+            display: inline-block;
             background-color: var(--primary-color);
             color: white;
             border: none;
@@ -179,11 +192,24 @@
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
+            text-decoration: none;
             transition: background-color 0.2s;
         }
 
-        button:hover {
+        button:hover, .btn-link:hover {
             background-color: var(--primary-hover);
+        }
+
+        .btn-extension {
+            background-color: #d97706;
+            color: white;
+            padding: 0.85rem 1.5rem;
+            font-size: 1.05rem;
+            margin-top: 1rem;
+        }
+
+        .btn-extension:hover {
+            background-color: #b45309;
         }
 
         /* Arcade Games Container */
@@ -321,6 +347,7 @@
                 <li><a href="#game-5">7. Game 5: Block Planning</a></li>
                 <li><a href="#phelps-system">8. Build Your System</a></li>
                 <li><a href="#journal">9. LSS Journal Exit Ticket</a></li>
+                <li><a href="extension.html" class="ext-link">🚀 Extension Zone</a></li>
             </ul>
         </nav>
     </aside>
@@ -496,8 +523,11 @@
                 <button type="submit" id="submit-btn">Submit Entry to Teacher</button>
             </form>
 
-            <div id="journal-success" class="hidden interactive-box" style="background-color: #dcfce7; border: 1px solid #86efac; color: #166534; margin-top: 1rem;">
-                🎉 <strong>Journal Entry Submitted!</strong> Your responses have been successfully sent to Mr. Drury (jdrury@bialik.ca).
+            <div id="journal-success" class="hidden interactive-box" style="background-color: #dcfce7; border: 1px solid #86efac; color: #166534; margin-top: 1rem; text-align: center;">
+                <p style="font-size: 1.1rem; margin-bottom: 0.75rem;">🎉 <strong>Journal Entry Submitted!</strong> Your responses have been sent to Mr. Drury (jdrury@bialik.ca).</p>
+                <hr style="border: 0; border-top: 1px solid #86efac; margin: 1rem 0;">
+                <p><strong>Finished all activities early?</strong> Click below to unlock bonus challenges, a brain superpower quiz, and famous case studies!</p>
+                <a href="extension.html" class="btn-link btn-extension">Go to Extension Zone 🚀</a>
             </div>
         </section>
     </main>
@@ -754,7 +784,6 @@
             if(!isTowerActive) return;
             clearInterval(towerInterval);
             
-            // Check alignment (Center is around 70px)
             if(towerPos >= 40 && towerPos <= 100) {
                 towerScore++;
                 document.getElementById('tower-score').innerText = towerScore;
@@ -799,7 +828,6 @@
             const system2 = document.getElementById('sys-2').value || 'N/A';
             const system3 = document.getElementById('sys-3').value || 'N/A';
 
-            // Submit directly to Formspree endpoint targeting jdrury@bialik.ca
             fetch('https://formspree.io/f/xknlqovw', {
                 method: 'POST',
                 headers: {
@@ -823,7 +851,6 @@
             })
             .catch(error => {
                 console.error('Submission Error:', error);
-                // Fallback display in case of network restriction
                 document.getElementById('exit-ticket-form').style.display = 'none';
                 document.getElementById('journal-success').classList.remove('hidden');
             });
