@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSS Brain Lab | Extension Zone</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --sidebar-bg: #1e293b;
+            --sidebar-text: #94a3b8;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        aside {
+            width: 270px;
+            background-color: var(--sidebar-bg);
+            color: white;
+            padding: 2rem 1rem;
+            position: fixed;
+            height: 100vh;
+        }
+
+        aside h2 { font-size: 1.25rem; color: #f1f5f9; }
+        aside p.subtitle { font-size: 0.85rem; color: var(--sidebar-text); margin-bottom: 2rem; }
+
+        nav ul { list-style: none; }
+        nav li { margin-bottom: 0.5rem; }
+        nav a {
+            color: var(--sidebar-text);
+            text-decoration: none;
+            display: block;
+            padding: 0.6rem 0.85rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        nav a.active { background-color: var(--primary-color); color: white; }
+
+        main {
+            margin-left: 270px;
+            flex: 1;
+            padding: 3rem 4rem;
+            max-width: 950px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h1 { font-size: 2.25rem; color: var(--heading-color); margin-bottom: 0.75rem; }
+        h2 { font-size: 1.5rem; color: var(--heading-color); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+
+        .badge {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #d97706;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .info-card {
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.25rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .interactive-box {
+            background-color: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover { background-color: var(--primary-hover); }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h2>LSS Extension</h2>
+        <p class="subtitle">Fast-Finisher Zone</p>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">🚀 Brain Superpowers</a></li>
+                <li><a href="index.html">⬅️ Back to Main Hub</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section>
+            <span class="badge">Bonus Extension Challenge</span>
+            <h1>Discover Your Executive Function Superpower! ⚡</h1>
+            <p>You finished early! Take this quick 3-question self-quiz to discover your brain's naturally strong Executive Function area and unlock custom study strategies.</p>
+
+            <div class="interactive-box">
+                <h3>Question 1: Desk & Folder Management</h3>
+                <p>How do you usually handle loose papers and school handouts?</p>
+                <select id="q1" style="width:100%; padding:0.5rem; margin:0.5rem 0 1rem 0;">
+                    <option value="org">I file them in color-coded folders immediately.</option>
+                    <option value="plan">I write down what page they belong to in my agenda.</option>
+                    <option value="focus">I read them carefully right away so I don't forget.</option>
+                </select>
+
+                <h3>Question 2: Big Projects</h3>
+                <p>When assigned a major project due in 3 weeks, what is your first instinct?</p>
+                <select id="q2" style="width:100%; padding:0.5rem; margin:0.5rem 0 1rem 0;">
+                    <option value="plan">Break it down into small dates on a calendar.</option>
+                    <option value="focus">Sit down and get as much done as possible in one focus block.</option>
+                    <option value="org">Gather all necessary materials, templates, and research links first.</option>
+                </select>
+
+                <button onclick="calculatePower()">Unlock My Superpower</button>
+
+                <div id="quiz-result" class="hidden" style="margin-top: 1.5rem;">
+                    <div class="info-card" style="border-left-color: var(--accent-green);">
+                        <h3 id="power-title">Your Brain Superpower: Master Planner 📅</h3>
+                        <p id="power-desc">You excel at seeing big goals and breaking them down into step-by-step actions!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Famous Brain Case Study: Taylor Swift 📝</h2>
+            <div class="info-card" style="border-left-color: var(--accent-purple);">
+                <h3>Color-Coding & Voice Memos as Working Memory Supports</h3>
+                <p>Did you know Taylor Swift writes all her lyrics using three distinct "pens" (Fountain Pen, Glitter Gel Pen, and Quill) depending on the mood of the song? She also records short voice notes on her phone the second an idea strikes.</p>
+                <p><strong>Why this works:</strong> Her brain uses external systems (voice memos & visual cues) so her working memory doesn't get overloaded trying to remember musical ideas!</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculatePower() {
+            const q1 = document.getElementById('q1').value;
+            const title = document.getElementById('power-title');
+            const desc = document.getElementById('power-desc');
+
+            if(q1 === 'org') {
+                title.innerText = "Your Brain Superpower: Systems Organizer 📁";
+                desc.innerText = "You have a natural ability to keep your environment clear, making it easier for your brain to focus!";
+            } else if(q1 === 'plan') {
+                title.innerText = "Your Brain Superpower: Master Strategist 📅";
+                desc.innerText = "You excel at planning ahead and breaking large, scary tasks into small daily steps!";
+            } else {
+                title.innerText = "Your Brain Superpower: Laser Focus 🎯";
+                desc.innerText = "You have strong impulse control and can lock into tasks quickly when you eliminate distractions!";
+            }
+
+            document.getElementById('quiz-result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
